@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Metropolis Academy — Nyamira, Kenya</title>
+<meta name="description" content="Royal Metropolis Academy is a CBC day and boarding school on the tea highlands of Nyamira, Kenya, guiding learners from Pre-Primary through Junior School.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest-deep:#122E22;
+    --forest:#1B4A35;
+    --forest-mid:#2C6B4C;
+    --gold:#C9A227;
+    --gold-light:#E7C767;
+    --maroon:#7A2233;
+    --cream:#F6F1E2;
+    --paper:#FCFAF3;
+    --ink:#1D1A13;
+    --ink-soft:#4B463A;
+    --line: rgba(29,26,19,0.12);
+    --radius: 2px;
+    --max: 1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0;
+    color:var(--forest-deep);
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--gold);display:inline-block;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:13px 26px;
+    font-family:'Work Sans', sans-serif;
+    font-weight:600;
+    font-size:14.5px;
+    text-decoration:none;
+    border-radius:var(--radius);
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+  }
+  .btn-gold{background:var(--gold); color:var(--forest-deep);}
+  .btn-gold:hover{background:var(--gold-light); transform:translateY(-1px);}
+  .btn-line{border-color:rgba(246,241,226,0.55); color:var(--cream);}
+  .btn-line:hover{border-color:var(--cream); background:rgba(246,241,226,0.08);}
+  .btn-dark{border-color:var(--forest); color:var(--forest-deep);}
+  .btn-dark:hover{background:var(--forest-deep); color:var(--cream);}
+  :focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+
+  /* ===== NAV ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(18,46,34,0.96);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(201,162,39,0.25);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; max-width:var(--max); margin:0 auto;
+  }
+  .brand{display:flex; align-items:center; gap:12px; text-decoration:none;}
+  .brand svg{width:38px; height:38px; flex-shrink:0;}
+  .brand-text{font-family:'Fraunces', serif; color:var(--cream); line-height:1.15;}
+  .brand-text strong{display:block; font-size:16.5px; font-weight:600;}
+  .brand-text span{display:block; font-size:11px; font-family:'IBM Plex Mono',monospace; letter-spacing:.12em; color:var(--gold-light); text-transform:uppercase;}
+  nav.links{display:flex; gap:30px; list-style:none; margin:0; padding:0;}
+  nav.links a{
+    text-decoration:none; color:var(--cream); font-size:14.5px; font-weight:500;
+    opacity:.86; transition:opacity .15s ease; position:relative;
+  }
+  nav.links a:hover{opacity:1;}
+  .nav-cta{display:flex; align-items:center; gap:18px;}
+  .menu-btn{display:none; background:none; border:none; cursor:pointer; padding:6px;}
+  .menu-btn span{display:block; width:22px; height:2px; background:var(--cream); margin:5px 0;}
+
+  /* ===== TERRACE DIVIDER (signature element) ===== */
+  .terrace{width:100%; display:block; line-height:0;}
+  .terrace svg{width:100%; height:auto; display:block;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    background:linear-gradient(180deg, var(--forest-deep) 0%, var(--forest) 62%, var(--forest-mid) 100%);
+    color:var(--cream);
+    overflow:hidden;
+    padding-bottom:0;
+  }
+  .hero-inner{
+    max-width:var(--max); margin:0 auto; padding:86px 28px 70px;
+    display:grid; grid-template-columns: 1.15fr 0.85fr; gap:50px; align-items:center;
+    position:relative; z-index:2;
+  }
+  .hero h1{
+    color:var(--cream);
+    font-size:clamp(40px, 5.4vw, 68px);
+    line-height:1.03;
+    margin:18px 0 22px;
+  }
+  .hero h1 em{font-style:italic; color:var(--gold-light); font-weight:500;}
+  .hero p.motto{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:19px; color:var(--gold-light); margin:0 0 18px;
+  }
+  .hero p.desc{max-width:520px; color:rgba(246,241,226,0.86); font-size:16.5px; margin:0 0 34px;}
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap;}
+  .hero-art{position:relative;}
+  .hero-art svg{width:100%; height:auto;}
+  .hero-stats{
+    max-width:var(--max); margin:0 auto; padding:0 28px 54px;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:rgba(201,162,39,0.22);
+    border-top:1px solid rgba(201,162,39,0.28);
+    position:relative; z-index:2;
+  }
+  .stat{background:var(--forest-deep); padding:26px 22px;}
+  .stat b{
+    display:block; font-family:'Fraunces', serif; font-size:30px; color:var(--gold-light); font-weight:600;
+  }
+  .stat span{display:block; font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:rgba(246,241,226,0.7); margin-top:6px;}
+
+  /* ===== SECTION generic ===== */
+  section{padding:90px 0;}
+  .section-head{max-width:640px; margin-bottom:52px;}
+  .section-head h2{font-size:clamp(30px,3.6vw,42px); margin-top:14px; line-height:1.08;}
+  .section-head p{color:var(--ink-soft); font-size:16.5px; margin-top:16px;}
+
+  /* ===== ABOUT ===== */
+  .about{background:var(--paper);}
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
+  .about-copy p{color:var(--ink-soft); margin:0 0 18px; font-size:16px;}
+  .values{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px;}
+  .value-chip{
+    border:1px solid var(--line); padding:9px 16px; border-radius:999px;
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:.03em; color:var(--forest);
+    background:var(--cream);
+  }
+  .mv-card{
+    background:var(--forest-deep); color:var(--cream); padding:34px 32px; border-radius:var(--radius);
+    margin-bottom:18px; position:relative; overflow:hidden;
+  }
+  .mv-card::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--gold);}
+  .mv-card h3{color:var(--gold-light); font-size:13px; font-family:'IBM Plex Mono',monospace; letter-spacing:.14em; text-transform:uppercase; font-weight:500; margin-bottom:12px;}
+  .mv-card p{margin:0; font-family:'Fraunces',serif; font-size:19px; font-weight:500; line-height:1.4; color:var(--cream);}
+
+  /* ===== ACADEMICS — ladder ===== */
+  .academics{background:var(--forest-deep); color:var(--cream);}
+  .academics .section-head h2, .academics .eyebrow{color:var(--cream);}
+  .academics .eyebrow{color:var(--gold-light);}
+  .academics .eyebrow::before{background:var(--gold-light);}
+  .academics .section-head p{color:rgba(246,241,226,0.78);}
+  .ladder{display:flex; flex-direction:column; border-top:1px solid rgba(201,162,39,0.25);}
+  .rung{
+    display:grid; grid-template-columns: 90px 1fr 1.3fr; gap:28px; align-items:center;
+    padding:26px 0; border-bottom:1px solid rgba(201,162,39,0.18);
+  }
+  .rung .lvl{font-family:'Fraunces',serif; font-size:34px; color:var(--gold); font-weight:600;}
+  .rung h4{color:var(--cream); font-size:19px; margin-bottom:4px;}
+  .rung .age{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--gold-light); letter-spacing:.06em; text-transform:uppercase;}
+  .rung p{margin:0; color:rgba(246,241,226,0.78); font-size:15px;}
+
+  /* ===== CAMPUS LIFE ===== */
+  .campus{background:var(--cream);}
+  .campus-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .campus-card{
+    background:var(--paper); border:1px solid var(--line); padding:30px 26px; border-radius:var(--radius);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .campus-card:hover{transform:translateY(-4px); box-shadow:0 14px 30px rgba(18,46,34,0.1);}
+  .campus-card .icon{width:40px; height:40px; margin-bottom:18px;}
+  .campus-card h4{font-size:18.5px; margin-bottom:10px;}
+  .campus-card p{margin:0; color:var(--ink-soft); font-size:14.5px;}
+  .houses{margin-top:56px;}
+  .houses h3{font-size:20px; margin-bottom:20px;}
+  .house-row{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  .house{
+    padding:20px; border-radius:var(--radius); color:var(--cream); position:relative; min-height:120px;
+    display:flex; flex-direction:column; justify-content:flex-end;
+  }
+  .house b{font-family:'Fraunces',serif; font-size:18px; display:block;}
+  .house span{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; opacity:.85;}
+  .house.h1{background:linear-gradient(135deg, #1B4A35, #2C6B4C);}
+  .house.h2{background:linear-gradient(135deg, #7A2233, #9C3247);}
+  .house.h3{background:linear-gradient(135deg, #4A3A17, #C9A227);}
+  .house.h4{background:linear-gradient(135deg, #122E22, #1B4A35);}
+
+  /* ===== ADMISSIONS — steps ===== */
+  .admissions{background:var(--paper);}
+  .adm-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  .steps{list-style:none; margin:0; padding:0; counter-reset:step;}
+  .steps li{
+    counter-increment:step; display:grid; grid-template-columns:44px 1fr; gap:18px;
+    padding:22px 0; border-bottom:1px solid var(--line);
+  }
+  .steps li:first-child{padding-top:0;}
+  .steps li::before{
+    content:counter(step,decimal-leading-zero); font-family:'IBM Plex Mono',monospace;
+    font-size:14px; color:var(--gold); border:1px solid var(--gold); border-radius:50%;
+    width:36px; height:36px; display:flex; align-items:center; justify-content:center;
+  }
+  .steps h4{font-size:16.5px; margin-bottom:5px;}
+  .steps p{margin:0; color:var(--ink-soft); font-size:14.5px;}
+  .adm-panel{
+    background:var(--forest-deep); border-radius:var(--radius); padding:38px 34px; color:var(--cream);
+  }
+  .adm-panel h3{color:var(--cream); font-size:22px; margin-bottom:12px;}
+  .adm-panel p{color:rgba(246,241,226,0.8); font-size:15px; margin-bottom:24px;}
+  .req-list{list-style:none; margin:0 0 28px; padding:0;}
+  .req-list li{padding:10px 0; border-bottom:1px solid rgba(201,162,39,0.2); font-size:14.5px; color:rgba(246,241,226,0.9);}
+  .req-list li::before{content:"— "; color:var(--gold);}
+
+  /* ===== TESTIMONIALS ===== */
+  .voices{background:var(--forest-mid); color:var(--cream); position:relative;}
+  .voices-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .voice{padding:30px 28px; border:1px solid rgba(246,241,226,0.2); border-radius:var(--radius);}
+  .voice p.quote{font-family:'Fraunces',serif; font-style:italic; font-size:17.5px; line-height:1.45; color:var(--cream); margin:0 0 20px;}
+  .voice .who{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.05em; color:var(--gold-light); text-transform:uppercase;}
+
+  /* ===== CONTACT ===== */
+  .contact{background:var(--paper);}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
+  .cinfo dt{font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); margin-top:24px;}
+  .cinfo dd{margin:6px 0 0; font-size:16.5px; font-family:'Fraunces',serif; color:var(--forest-deep);}
+  .cinfo dt:first-child{margin-top:0;}
+  .form{display:flex; flex-direction:column; gap:16px;}
+  .form label{font-size:13px; font-weight:600; color:var(--ink-soft); margin-bottom:6px; display:block;}
+  .form input, .form select, .form textarea{
+    width:100%; padding:13px 14px; border:1px solid var(--line); border-radius:var(--radius);
+    font-family:'Work Sans',sans-serif; font-size:15px; background:var(--cream); color:var(--ink);
+  }
+  .form textarea{min-height:100px; resize:vertical;}
+  .row2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+
+  footer{background:var(--forest-deep); color:rgba(246,241,226,0.75); padding:54px 0 28px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; margin-bottom:40px;}
+  .foot-brand{display:flex; gap:12px; align-items:center; margin-bottom:14px;}
+  .foot-brand svg{width:32px;height:32px;}
+  .foot-brand b{font-family:'Fraunces',serif; color:var(--cream); font-size:17px;}
+  footer h5{font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-light); margin-bottom:14px;}
+  footer ul{list-style:none; margin:0; padding:0;}
+  footer li{margin-bottom:9px; font-size:14.5px;}
+  footer a{text-decoration:none; color:inherit; opacity:.9;}
+  footer a:hover{opacity:1; color:var(--gold-light);}
+  .foot-bottom{border-top:1px solid rgba(201,162,39,0.2); padding-top:24px; display:flex; justify-content:space-between; font-size:13px; flex-wrap:wrap; gap:10px;}
+
+  [data-reveal]{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
+  [data-reveal].in{opacity:1; transform:none;}
+
+  @media (max-width: 880px){
+    nav.links, .nav-cta .btn-line{display:none;}
+    .menu-btn{display:block;}
+    .hero-inner{grid-template-columns:1fr; padding-top:56px;}
+    .hero-stats{grid-template-columns:repeat(2,1fr);}
+    .about-grid, .adm-grid, .contact-grid{grid-template-columns:1fr; gap:36px;}
+    .campus-grid{grid-template-columns:1fr 1fr;}
+    .house-row{grid-template-columns:1fr 1fr;}
+    .voices-grid{grid-template-columns:1fr;}
+    .rung{grid-template-columns:60px 1fr; }
+    .rung p{grid-column:1/-1;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .row2{grid-template-columns:1fr;}
+  }
+  @media (max-width: 560px){
+    .campus-grid{grid-template-columns:1fr;}
+    .house-row{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr;}
+    section{padding:64px 0;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    [data-reveal]{opacity:1; transform:none; transition:none;}
+    .campus-card:hover{transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="23" stroke="#C9A227" stroke-width="1.5"/>
+        <path d="M6 30 L16 20 L22 26 L30 14 L42 30" stroke="#E7C767" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="30" cy="13" r="4" fill="#C9A227"/>
+      </svg>
+      <span class="brand-text"><strong>Royal Metropolis</strong><span>Academy · Nyamira</span></span>
+    </a>
+    <ul class="links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#academics">Academics</a></li>
+      <li><a href="#campus">Campus Life</a></li>
+      <li><a href="#admissions">Admissions</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-line">Book a visit</a>
+    </div>
+    <button class="menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- ================= HERO ================= -->
+  <section class="hero" style="padding-top:0;">
+    <div class="hero-inner">
+      <div>
+        <p class="eyebrow">Nyamira County, Kenya</p>
+        <h1>Rooted in the <em>hills</em>,<br>rising in excellence.</h1>
+        <p class="motto">"Rooted in Wisdom, Rising in Excellence"</p>
+        <p class="desc">Royal Metropolis Academy is a CBC day and boarding school set on the tea highlands above Nyamira town — guiding learners from Pre-Primary through Junior School with the discipline of the ridge and the reach of the wider world.</p>
+        <div class="hero-actions">
+          <a href="#admissions" class="btn btn-gold">Start an application</a>
+          <a href="#academics" class="btn btn-line">Explore the CBC pathway</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 480 420" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="360" cy="90" r="46" fill="#E7C767" opacity="0.9"/>
+          <circle cx="360" cy="90" r="70" fill="none" stroke="#E7C767" stroke-width="1" opacity="0.3"/>
+          <path d="M0 260 L60 210 L120 245 L180 190 L240 235 L300 175 L360 220 L420 200 L480 240 L480 420 L0 420 Z" fill="#2C6B4C" opacity="0.55"/>
+          <path d="M0 300 L70 260 L140 290 L210 250 L280 285 L350 245 L420 275 L480 255 L480 420 L0 420 Z" fill="#1B4A35" opacity="0.8"/>
+          <path d="M0 345 L60 320 L130 340 L200 315 L270 338 L340 312 L410 335 L480 315 L480 420 L0 420 Z" fill="#122E22"/>
+          <g opacity="0.5" stroke="#E7C767" stroke-width="1">
+            <path d="M20 300 L80 300"/><path d="M40 320 L100 320"/><path d="M60 340 L120 340"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat" data-reveal><b>2011</b><span>Founded</span></div>
+      <div class="stat" data-reveal><b>870+</b><span>Learners</span></div>
+      <div class="stat" data-reveal><b>PP1–G9</b><span>CBC levels offered</span></div>
+      <div class="stat" data-reveal><b>Day &amp; Boarding</b><span>Enrollment options</span></div>
+    </div>
+    <div class="terrace" aria-hidden="true">
+      <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 40 L100 20 L200 35 L300 15 L400 32 L500 12 L600 30 L700 18 L800 34 L900 16 L1000 30 L1100 20 L1200 36 L1200 60 L0 60 Z" fill="#FCFAF3"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">About the academy</p>
+        <h2>A school built on the shape of its land.</h2>
+        <p>Nyamira's ridges are terraced for tea; Royal Metropolis Academy is terraced for learning — each level built deliberately on the one below it, so no learner is asked to reach for a rung that isn't there yet.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-copy" data-reveal>
+          <p>Founded in 2011 on a four-acre ridge-top site outside Nyamira town, Royal Metropolis Academy began with two classrooms and forty learners. Today it serves close to 900 children from Pre-Primary through Grade 9, drawing families from across Nyamira, Kisii, and Bomet counties who want a school small enough to know every child's name and structured enough to prepare them for national assessment and beyond.</p>
+          <p>We teach the Kenyan Competency-Based Curriculum in full, with an emphasis on the things a highlands upbringing already gives a child a head start on: agriculture and environmental science, practical craft and technical skills, and a discipline for early mornings.</p>
+          <div class="values">
+            <span class="value-chip">Integrity</span>
+            <span class="value-chip">Discipline</span>
+            <span class="value-chip">Curiosity</span>
+            <span class="value-chip">Service</span>
+            <span class="value-chip">Stewardship of land</span>
+          </div>
+        </div>
+        <div data-reveal>
+          <div class="mv-card">
+            <h3>Vision</h3>
+            <p>To raise learners from the Nyamira highlands who lead with competence, conscience, and confidence — at home and beyond it.</p>
+          </div>
+          <div class="mv-card" style="background:var(--maroon);">
+            <h3 style="color:var(--gold-light);">Mission</h3>
+            <p>To deliver the CBC curriculum with rigour and warmth, in a boarding and day environment that is safe, well-resourced, and rooted in the values of the community it serves.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="terrace" aria-hidden="true" style="transform:rotate(180deg);">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 25 L120 10 L240 22 L360 8 L480 20 L600 6 L720 18 L840 10 L960 22 L1080 12 L1200 24 L1200 40 L0 40 Z" fill="#122E22"/>
+    </svg>
+  </div>
+
+  <!-- ================= ACADEMICS ================= -->
+  <section class="academics" id="academics">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">The CBC pathway</p>
+        <h2>Every level, built on the one before.</h2>
+        <p>We follow Kenya's Competency-Based Curriculum from Pre-Primary through Junior School, with dedicated teachers and facilities at each stage of the ladder.</p>
+      </div>
+      <div class="ladder">
+        <div class="rung" data-reveal>
+          <div class="lvl">01</div>
+          <div><h4>Pre-Primary</h4><div class="age">PP1 – PP2 · Ages 4–5</div></div>
+          <p>Play-based learning in literacy, numeracy, and motor skills, in classrooms built around a fenced outdoor learning garden.</p>
+        </div>
+        <div class="rung" data-reveal>
+          <div class="lvl">02</div>
+          <div><h4>Lower Primary</h4><div class="age">Grade 1 – 3 · Ages 6–8</div></div>
+          <p>Foundational literacy and numeracy alongside creative arts, environmental activities, and the start of Kiswahili and English fluency.</p>
+        </div>
+        <div class="rung" data-reveal>
+          <div class="lvl">03</div>
+          <div><h4>Upper Primary</h4><div class="age">Grade 4 – 6 · Ages 9–11</div></div>
+          <p>Subject specialisation begins: science, social studies, agriculture, and pre-technical studies taught by dedicated subject teachers.</p>
+        </div>
+        <div class="rung" data-reveal>
+          <div class="lvl">04</div>
+          <div><h4>Junior School</h4><div class="age">Grade 7 – 9 · Ages 12–14</div></div>
+          <p>Learners choose from optional pathway subjects — including agriculture, computer science, and pre-technical studies — ahead of Senior School placement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="terrace" aria-hidden="true">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 15 L120 30 L240 18 L360 32 L480 20 L600 34 L720 22 L840 30 L960 18 L1080 28 L1200 16 L1200 40 L0 40 Z" fill="#F6F1E2"/>
+    </svg>
+  </div>
+
+  <!-- ================= CAMPUS LIFE ================= -->
+  <section class="campus" id="campus">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Campus life</p>
+        <h2>Life on the ridge, beyond the classroom.</h2>
+        <p>A working campus with boarding houses, sports fields, and a full timetable of clubs — set among the school's own tea and vegetable gardens.</p>
+      </div>
+      <div class="campus-grid">
+        <div class="campus-card" data-reveal>
+          <svg class="icon" viewBox="0 0 40 40" fill="none"><path d="M8 34V16l12-9 12 9v18" stroke="#1B4A35" stroke-width="2" fill="none"/><rect x="16" y="22" width="8" height="12" stroke="#C9A227" stroke-width="2"/></svg>
+          <h4>Boarding houses</h4>
+          <p>Four boarding houses named for Nyamira's own hills and rivers, each with a resident house-parent and a 1:12 supervision ratio.</p>
+        </div>
+        <div class="campus-card" data-reveal>
+          <svg class="icon" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="14" stroke="#1B4A35" stroke-width="2"/><path d="M20 6v28M6 20h28" stroke="#C9A227" stroke-width="1.5"/></svg>
+          <h4>Sports &amp; athletics</h4>
+          <p>Football, netball, volleyball, and cross-country on our own grounds, plus an annual inter-house athletics meet on the highland track.</p>
+        </div>
+        <div class="campus-card" data-reveal>
+          <svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="7" y="9" width="26" height="22" rx="1" stroke="#1B4A35" stroke-width="2"/><path d="M12 16h16M12 21h16M12 26h10" stroke="#C9A227" stroke-width="1.5"/></svg>
+          <h4>Library &amp; ICT hub</h4>
+          <p>A 6,000-volume library and a 40-station computer lab, open to boarders every evening for prep and independent reading.</p>
+        </div>
+        <div class="campus-card" data-reveal>
+          <svg class="icon" viewBox="0 0 40 40" fill="none"><path d="M20 5c5 6 8 11 8 16a8 8 0 1 1-16 0c0-5 3-10 8-16Z" stroke="#1B4A35" stroke-width="2"/></svg>
+          <h4>School farm &amp; gardens</h4>
+          <p>A working tea plot, vegetable garden, and dairy unit that supply the dining hall and anchor our agriculture curriculum.</p>
+        </div>
+        <div class="campus-card" data-reveal>
+          <svg class="icon" viewBox="0 0 40 40" fill="none"><path d="M6 30l6-12 6 8 6-14 6 12 4-6" stroke="#1B4A35" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h4>Clubs &amp; societies</h4>
+          <p>Drama, debate, environmental club, Young Farmers, and a chess team that has taken the sub-county trophy three years running.</p>
+        </div>
+        <div class="campus-card" data-reveal>
+          <svg class="icon" viewBox="0 0 40 40" fill="none"><path d="M8 20h24M8 20l6-6M8 20l6 6" stroke="#1B4A35" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h4>Transport &amp; day scholars</h4>
+          <p>Four school bus routes covering Nyamira town, Ekerenyo, and Manga, for day scholars arriving before 7:30am.</p>
+        </div>
+      </div>
+
+      <div class="houses">
+        <h3>The four boarding houses</h3>
+        <div class="house-row">
+          <div class="house h1" data-reveal><span>House</span><b>Gucha</b></div>
+          <div class="house h2" data-reveal><span>House</span><b>Manga</b></div>
+          <div class="house h3" data-reveal><span>House</span><b>Borabu</b></div>
+          <div class="house h4" data-reveal><span>House</span><b>Nyansiongo</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ADMISSIONS ================= -->
+  <section class="admissions" id="admissions">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Admissions</p>
+        <h2>How to join Royal Metropolis Academy.</h2>
+        <p>We admit new learners at the start of every term, subject to space at each grade level. Here's what the process looks like from first enquiry to first day.</p>
+      </div>
+      <div class="adm-grid">
+        <ol class="steps" data-reveal>
+          <li>
+            <div></div>
+            <div><h4>Enquire</h4><p>Call, email, or visit the admissions office to check space at your child's grade level.</p></div>
+          </li>
+          <li>
+            <div></div>
+            <div><h4>Visit &amp; assess</h4><p>Tour the campus and sit a short placement assessment in literacy and numeracy for the appropriate grade.</p></div>
+          </li>
+          <li>
+            <div></div>
+            <div><h4>Apply</h4><p>Submit the application form with the learner's birth certificate, latest report form, and two passport photos.</p></div>
+          </li>
+          <li>
+            <div></div>
+            <div><h4>Confirm &amp; enroll</h4><p>Pay the admission fee to secure the place, collect the uniform and boarding list, and begin on the agreed date.</p></div>
+          </li>
+        </ol>
+        <div class="adm-panel" data-reveal>
+          <h3>What you'll need</h3>
+          <p>Have these ready before your visit to move through admissions in a single trip.</p>
+          <ul class="req-list">
+            <li>Learner's birth certificate or NEMIS number</li>
+            <li>Latest school report / transition letter</li>
+            <li>Two passport-size photographs</li>
+            <li>Immunisation card (Pre-Primary &amp; Lower Primary)</li>
+            <li>Copy of parent/guardian national ID</li>
+          </ul>
+          <a href="#contact" class="btn btn-gold">Talk to admissions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <section class="voices">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow" style="color:var(--gold-light);">From our community</p>
+        <h2 style="color:#fff;">What families on the ridge say.</h2>
+      </div>
+      <div class="voices-grid">
+        <div class="voice" data-reveal>
+          <p class="quote">"My daughter moved from a school in town to Boarding at Gucha House in Grade 5. The change in her confidence — and her Kiswahili — surprised all of us."</p>
+          <p class="who">Parent, Grade 7 learner</p>
+        </div>
+        <div class="voice" data-reveal>
+          <p class="quote">"The school farm isn't decoration. Our Grade 8 agriculture class actually manages a section of the tea plot, start to sale."</p>
+          <p class="who">Parent, Junior School</p>
+        </div>
+        <div class="voice" data-reveal>
+          <p class="quote">"I teach chess on Thursdays and half the club walks in from Ekerenyo on the school bus just for it. That tells you something about the culture here."</p>
+          <p class="who">Staff, Clubs &amp; Societies</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Visit or get in touch</p>
+        <h2>Come see the ridge for yourself.</h2>
+        <p>The admissions office is open Monday to Friday, 8:00am–4:30pm, and Saturday mornings during application season.</p>
+      </div>
+      <div class="contact-grid">
+        <dl class="cinfo" data-reveal>
+          <dt>Address</dt>
+          <dd>Royal Metropolis Academy<br>Off Nyamira–Ekerenyo Road, Nyamira<br>Nyamira County, Kenya</dd>
+          <dt>Phone</dt>
+          <dd>+254 700 000 000</dd>
+          <dt>Email</dt>
+          <dd>admissions@royalmetropolis.ac.ke</dd>
+          <dt>Office hours</dt>
+          <dd>Mon–Fri · 8:00am – 4:30pm</dd>
+        </dl>
+        <form class="form" data-reveal onsubmit="event.preventDefault(); this.querySelector('.form-note').style.display='block';">
+          <div class="row2">
+            <div>
+              <label for="pname">Parent / guardian name</label>
+              <input id="pname" type="text" required>
+            </div>
+            <div>
+              <label for="pphone">Phone number</label>
+              <input id="pphone" type="tel" required>
+            </div>
+          </div>
+          <div>
+            <label for="grade">Grade of interest</label>
+            <select id="grade">
+              <option>Pre-Primary (PP1–PP2)</option>
+              <option>Lower Primary (Grade 1–3)</option>
+              <option>Upper Primary (Grade 4–6)</option>
+              <option>Junior School (Grade 7–9)</option>
+            </select>
+          </div>
+          <div>
+            <label for="msg">Message</label>
+            <textarea id="msg" placeholder="Tell us about your child and when you'd like to visit."></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold" style="align-self:flex-start;">Send enquiry</button>
+          <p class="form-note" style="display:none; font-size:13.5px; color:var(--forest); margin:0;">Thank you — the admissions office will get back to you within two working days.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="23" stroke="#C9A227" stroke-width="1.5"/>
+            <path d="M6 30 L16 20 L22 26 L30 14 L42 30" stroke="#E7C767" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="30" cy="13" r="4" fill="#C9A227"/>
+          </svg>
+          <b>Royal Metropolis Academy</b>
+        </div>
+        <p style="max-width:280px; font-size:14px;">A CBC day and boarding school on the tea highlands of Nyamira, Kenya. Pre-Primary through Junior School.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#academics">Academics</a></li>
+          <li><a href="#campus">Campus life</a></li>
+          <li><a href="#admissions">Admissions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li>Off Nyamira–Ekerenyo Road</li>
+          <li>Nyamira County, Kenya</li>
+          <li>+254 700 000 000</li>
+          <li>admissions@royalmetropolis.ac.ke</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Office hours</h5>
+        <ul>
+          <li>Mon – Fri: 8:00am – 4:30pm</li>
+          <li>Sat (term time): 9:00am – 12:00pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Royal Metropolis Academy, Nyamira.</span>
+      <span>Built with pride on the ridge.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile menu toggle
+  const menuBtn = document.querySelector('.menu-btn');
+  const links = document.querySelector('nav.links');
+  menuBtn.addEventListener('click', () => {
+    const open = links.style.display === 'flex';
+    links.style.display = open ? 'none' : 'flex';
+    links.style.cssText += open ? '' : 'position:absolute; top:100%; left:0; right:0; flex-direction:column; background:#122E22; padding:20px 28px; gap:18px;';
+  });
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+</script>
+</body>
+</html>
